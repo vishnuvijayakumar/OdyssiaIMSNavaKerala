@@ -1,0 +1,264 @@
+<?php
+//echo $_SERVER["DOCUMENT_ROOT"];die();
+  $page_title = 'All Barcodes';
+  require_once('includes/load.php');
+  // Checkin What level user has permission to view this page
+  page_require_level(1);
+  
+  //$all_barcodes = find_all('barcodedetails');
+  $all_barcodes =join_barcodegen_table();
+  $barcodeuique=0;
+  
+  //echo __DIR__; die();
+  include_once 'Pagination.class.php'; 
+ 
+ 
+  // Set some useful configuration 
+  $baseURL = 'getBarcodeData.php'; 
+  $limit = 10; 
+   
+  // Count of all records 
+  $Stockscount = join_barcodegen_table_count($whereSQL);
+  $result  = $Stockscount->fetch_assoc();  
+  $rowCount= $result['rowNum']; 
+  //print_r($rowCount);die();
+   
+  // Initialize pagination class 
+  $pagConfig = array( 
+      'baseURL' => $baseURL, 
+      'totalRows' => $rowCount, 
+      'perPage' => $limit, 
+      'contentDiv' => 'dataContainer', 
+      'link_func' => 'searchFilter1' 
+  ); 
+  $pagination =  new Pagination($pagConfig); 
+  
+  // Fetch records based on the limit 
+  $query = join_barcodegen_table_default($limit); 
+  
+  ?>
+<?php
+
+if(isset($_GET['Gen_barcode'])){  
+
+    $regenbarcode = rtrim($_GET['Gen_barcode'], ',');
+	
+	$last_bar=find_by_id_custom('barcodedetails',$regenbarcode,'Barcode');
+    //print_r($last_bar);die();
+    if($last_bar) {
+        $barcodeuique=$last_bar['Fullbarcode'];
+    }
+//echo $barcodeuique;die();
+    $regenbarcode=$barcodeuique;
+	
+    //$barcodefile=getenv("HOMEDRIVE").getenv("HOMEPATH")."/Desktop"."/Generated_barcode.txt";
+    $barcodefile='C:\IMSBarcode\barcodes.txt'; 
+    file_put_contents($barcodefile, $regenbarcode);
+
+    $session->msg("s", "Successfully Re-Generated...");
+        redirect('Barcodegen.php',false);
+
+}
+
+ if(isset($_POST['add_barcode'])){  
+     
+   $req_field = array('barcode-type','barcode-count');
+   validate_fields($req_field);
+   $barcode_type = remove_junk($db->escape($_POST['barcode-type']));
+   $barcode_count = remove_junk($db->escape($_POST['barcode-count']));
+
+   if(empty($errors)){
+
+    $content='';
+
+    for($i=0;$i<(int)$barcode_count;$i++) {
+
+        $k=$i+1;
+
+    $last_top_id=find_by_id_max('barcodedetails','barcode');
+	//print_r($last_top_id['lastbarcode']);
+    if($last_top_id['lastbarcode']=='') {
+        $barcodeuique=1001;
+    } else {
+        $barcodeuique=$last_top_id['lastbarcode']+1;
+    }
+
+    $fullbarcode=$barcode_type.'_'.$barcodeuique;
+      $sql  = "INSERT INTO barcodedetails (Barcode,BarcodeType,FullBarcode)";
+      $sql .= " VALUES ('{$barcodeuique}','{$barcode_type}','{$fullbarcode}')";
+      if($db->query($sql)){
+        $content.=$fullbarcode."\r\n";
+        $session->msg("s", "$k Barcodes Successfully Generated");
+      } else {
+        $session->msg("d", "$k Barcode Generated but Failed to Generate remaining.");
+        redirect('Barcodegen.php',false);
+      }
+
+    }
+
+    $content1 = trim($content, ",");
+    $barcodefile=$_SERVER["DOCUMENT_ROOT"]."/IMS/IMSBarcode/barcodes.txt";
+    //$barcodefile='D:\IMSBarcode\barcodes.txt';
+    file_put_contents($barcodefile, $content1);
+
+    $session->msg("s", "Successfully Generated All Barcodes");
+        redirect('Barcodegen.php',false);
+ 
+  if(empty($errors)){
+        $content = '';
+
+        for($i = 0; $i < (int)$barcode_count; $i++) {
+            $k = $i + 1;
+
+            // Generate barcode logic remains the same
+
+            // Append each generated barcode to $content
+            $content .= $fullbarcode . "\r\n";
+
+            // Rest of the code remains the same up to this point
+        }
+
+        // Save all generated barcodes to a text file
+        $barcodefile = $_SERVER["DOCUMENT_ROOT"] . "/IMS/IMSBarcode/barcodes.txt";
+        file_put_contents($barcodefile, $content);
+
+        // Trigger download of the text file
+        header("Content-Disposition: attachment; filename=\"barcodes.txt\"");
+        header("Content-Type: application/force-download");
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header("Content-Type: text/plain");
+        echo $content; // Output the content of the file
+
+        // End script execution to prevent further output
+        exit();
+
+   } else {
+     $session->msg("d", $errors);
+     redirect('Barcodegen.php',false);
+   }
+ }
+ 
+ if(isset($_POST['exportbarcodefile'])){
+     $namefile=$_SERVER["DOCUMENT_ROOT"]."/IMS/IMSBarcode/barcodes.txt";
+header("Content-Disposition: attachment; filename=\"" . $namefile . "\"");
+header("Content-Type: application/force-download");
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+header("Content-Type: text/plain");
+
+echo $content;
+ }
+?>
+
+<?php include_once('layouts/header.php'); ?>
+
+  <div class="row">
+     <div class="col-md-12">
+       <?php echo display_msg($msg); ?>
+     </div>
+  </div>
+   <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+         <div class="pull-right">
+		   <a href="Barcodegen.php?exportbarcodefile=1" class="btn btn-primary">Export</a>
+         </div>
+        </div>
+        <div class="panel-heading">
+          <strong>
+            <span class="glyphicon glyphicon-th"></span>
+            <span>Generate Barcodes</span>
+         </strong>
+        </div>
+        <div class="panel-body">
+          <form method="post" action="Barcodegen.php">
+            <div class="form-group">
+                <select type="text" class="form-control" name="barcode-type" placeholder="Barcode Type">
+                <option value="">Select Barcode Type</option>
+                <option value="Rexin">Rexin</option>
+                <option value="Comp">Components</option>
+                <option value="Upper">Upper</option>
+                <option value="Spair">Spairs</option>
+                </select>
+
+                <input type="text" class="form-control" name="barcode-count" placeholder="Needed Count of Barcode">
+            </div>
+            <button type="submit" name="add_barcode" class="btn btn-primary">Generate</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>
+          <span class="glyphicon glyphicon-th"></span>
+          <span>All Barcodes</span>
+       </strong>
+       <div class="pull-right">
+        <div class="form-group">
+            <input type="text" class="form-control" id="keywords" placeholder="Type keywords..." onkeyup="searchFilter1();">
+        </div> 
+         </div>
+      </div>
+        <div class="panel-body">
+        <div class="datalist-wrapper">
+    <!-- Loading overlay -->
+    <div class="loading-overlay" style="display:none;"><div class="overlay-content">Loading...</div></div>
+    
+    <!-- Data list container -->
+    <div id="dataContainer">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <tr>
+                    <th scope="col" class="text-center" style="width: 50px;">#</th>
+                    <th scope="col">Barcodes</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Quantity Available</th>
+                    <th scope="col">UOM</th>
+                    <th scope="col">Location</th>
+                    <th scope="col" class="text-center" style="width: 100px;">Re-Generate</th> 
+                </tr>
+                <?php if($query->num_rows > 0){ $i=0; 
+                while($bar = $query->fetch_assoc()){ $i++;?>
+                <tr>
+                    <td scope="row" class="text-center"><?php echo count_id();?></td>
+                    <td><?php echo remove_junk(ucfirst($bar['Fullbarcode'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($bar['ItemName'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($bar['Quantity'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($bar['UOM'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($bar['LocationName'])); ?></td>
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <a href="Barcodegen.php?Gen_barcode=<?php echo (int)$bar['Barcode'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Generate">
+                          <span class="glyphicon glyphicon-print"></span>
+                        </a>
+                      </div>
+                    </td> 
+                </tr>
+            <?php 
+                } 
+            }else{ 
+                echo '<tr><td colspan="6">No records found...</td></tr>'; 
+            } 
+            ?>
+        </tbody>
+        </table>
+        
+        <!-- Display pagination links -->
+        <?php echo $pagination->createLinks(); ?>
+    </div>
+</div>
+      </div>
+       </div>
+    </div>
+    </div>
+   </div>
+  </div>
+  <?php include_once('layouts/footer.php'); ?>
+

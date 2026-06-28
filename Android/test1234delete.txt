@@ -1,0 +1,21 @@
+select a.Barcode as Barcode,b.ProductId as ProductId,c.CategoryId as CategoryId, d.SubCategoryId as SubCategoryId, e.UomId as UomId, f.LocationId as LocationId, g.id as userId
+
+from ((SELECT Barcode from `barcodedetails` where Fullbarcode = 'Rexin_1002') as a
+join
+(SELECT ProductId FROM `productdetails` WHERE `ItemCode` = '5-NL02-1330') as b on 1=1
+  JOIN
+ (SELECT CategoryId FROM `categorydetails` WHERE `CategoryName` = 'Rexin') as c 
+   on 1=1
+   join
+   (SELECT SubCategoryId,Uom FROM `subcategorydetails` WHERE SubCategoryName = 'INSOLE') as d 
+  on 1=1
+  JOIN
+ (SELECT UomId,UomType FROM `uomdetails` WHERE UomSubType = 'MTR' ) as e 
+              on d.Uom = e.UomType
+JOIN
+ (SELECT LocationId FROM `locationdetails` WHERE LocationName = 'B11') as f 
+  on 1=1
+  JOIN
+  (SELECT id FROM `users` WHERE username = 'Rexinuser') as g 
+     on 1=1         
+              )

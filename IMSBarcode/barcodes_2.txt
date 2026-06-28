@@ -1,0 +1,11 @@
+s for Datatype 4ce5b966-b863-4108-990d-4f0a6900a896
+2024.01.12 08:56:13.896 [10072] (00130) W SystGlob: {ServiceStatus - 4ce5b966-b863-4108-990d-4f0a6900a896} No Property Parsers defined.
+2024.01.12 09:01:13.905 [10072] (00282) I SystGlob: Start extracting properties for Datatype 4ce5b966-b863-4108-990d-4f0a6900a896
+2024.01.12 09:01:13.906 [10072] (00282) W SystGlob: {ServiceStatus - 4ce5b966-b863-4108-990d-4f0a6900a896} No Property Parsers defined.
+2024.01.12 09:04:58.742 [10072] (00291) E BattColl: CollectData: Exception has been thrown by the target of an invocation. *** CollectData() in BaseCollector.cs(192) 
+2024.01.12 09:04:58.744 [10072] (00291) E COLL_MGR: {BatteryDynamicData - 9f45e5f6-4599-4494-a0f4-8a710d29ac59} Failed to collect (Periodic trigger) request 7d6a5897-1dfc-415a-855c-041fa74a82f1 *** FulfillAsync() in CollectionManager.CollectionRequest.cs(142) 
+2024.01.12 09:04:58.745 [10072] (00291) I COLL_MGR: [D] {BatteryDynamicData - 9f45e5f6-4599-4494-a0f4-8a710d29ac59} Failed to collect (Periodic trigger) request 7d6a5897-1dfc-415a-855c-041fa74a82f1
+Dell.TechHub.Configuration.DatatypeNotApplicableException: Datatype not available on Desktop
+   at Dell.TechHub.Plugins.BatteryCollector.CheckFormFactorApplicability()
+   at Dell.TechHub.Plugins.BatteryCollector.CollectBatteryDynamicData(ItemId itemId, CancellationToken cancellationToken)
+--- End of stack tra

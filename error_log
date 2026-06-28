@@ -1,0 +1,94 @@
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:03:48 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:03:58 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:04:14 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 17:34:58 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 293
+[10-Jun-2024 17:34:58 UTC] PHP Fatal error:  Uncaught Error: Cannot use a scalar value as an array in /home/simplepr/public_html/InventorySystem/includes/sql.php:299
+Stack trace:
+#0 /home/simplepr/public_html/InventorySystem/category.php(5): page_require_level()
+#1 {main}
+  thrown in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 299
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:05:17 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 17:35:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 293
+[10-Jun-2024 17:35:22 UTC] PHP Fatal error:  Uncaught Error: Cannot use a scalar value as an array in /home/simplepr/public_html/InventorySystem/includes/sql.php:299
+Stack trace:
+#0 /home/simplepr/public_html/InventorySystem/profile.php(5): page_require_level()
+#1 {main}
+  thrown in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 299
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:05:26 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 17:35:38 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 293
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 43
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 44
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 48
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 72
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 76
+[10-Jun-2024 23:06:45 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/layouts/header.php on line 80
+[10-Jun-2024 17:37:16 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[10-Jun-2024 17:37:18 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[10-Jun-2024 17:37:29 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[10-Jun-2024 17:37:30 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[27-Jul-2024 07:36:45 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[27-Jul-2024 07:38:01 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[27-Jul-2024 07:38:01 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[27-Jul-2024 07:38:07 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[29-Jul-2024 20:56:18 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[29-Jul-2024 20:58:24 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[29-Jul-2024 21:10:25 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[30-Jul-2024 09:41:32 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[30-Jul-2024 09:45:13 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[30-Jul-2024 09:45:21 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[30-Jul-2024 09:45:28 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[31-Jul-2024 06:00:29 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[31-Jul-2024 06:08:38 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:50:06 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:50:33 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:50:33 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:50:50 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:55:32 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:55:33 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[01-Aug-2024 03:55:49 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 03:42:23 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[02-Aug-2024 06:14:09 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 06:14:35 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 06:14:42 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 06:14:48 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 06:39:10 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[02-Aug-2024 08:21:10 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[02-Aug-2024 08:24:45 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[02-Aug-2024 08:31:10 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[02-Aug-2024 18:36:35 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[03-Aug-2024 09:32:01 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[06-Aug-2024 04:59:01 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[06-Aug-2024 05:01:38 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[06-Aug-2024 05:01:43 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Barcodegen.php on line 21
+[07-Aug-2024 06:40:48 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[07-Aug-2024 06:41:08 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/simplepr/public_html/InventorySystem/includes/sql.php on line 293
+[07-Aug-2024 06:41:22 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[07-Aug-2024 06:41:23 UTC] PHP Warning:  Undefined variable $whereSQL in /home/simplepr/public_html/InventorySystem/Stock.php on line 20
+[09-Aug-2024 04:35:39 UTC] PHP Warning:  Undefined array key "username" in /home/simplepr/public_html/InventorySystem/includes/functions.php on line 35
+[09-Aug-2024 04:35:39 UTC] PHP Warning:  Undefined array key "username" in /home/simplepr/public_html/InventorySystem/auth.php on line 5
+[09-Aug-2024 04:35:39 UTC] PHP Warning:  Undefined array key "password" in /home/simplepr/public_html/InventorySystem/auth.php on line 6
