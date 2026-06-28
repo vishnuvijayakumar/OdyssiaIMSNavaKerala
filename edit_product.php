@@ -27,7 +27,7 @@ if(!(isset($product['ProductId']))){
 ?>
 <?php
  if(isset($_POST['product'])){
-    $req_fields = array('product-code','product-title','product-categorie','product-subcategory');
+    $req_fields = array('product-code','product-title','product-categorie','product-subcategory','product-value');
     validate_fields($req_fields);
 
    if(empty($errors)){
@@ -35,6 +35,7 @@ if(!(isset($product['ProductId']))){
        $p_name  = remove_junk($db->escape($_POST['product-title']));
        $p_cat   = remove_junk($db->escape($_POST['product-categorie']));
        $p_subcat   = remove_junk($db->escape($_POST['product-subcategory']));
+       $p_value   = remove_junk($db->escape($_POST['product-value']));
        //$p_sale  = remove_junk($db->escape($_POST['saleing-price']));
        //if (is_null($_POST['product-photo']) || $_POST['product-photo'] === "") {
        //  $media_id = '0';
@@ -43,7 +44,7 @@ if(!(isset($product['ProductId']))){
        //}
        
        $query   = "UPDATE productdetails SET";
-       $query  .=" Itemcode='{$p_code}', ItemName ='{$p_name}', CategoryId ='{$p_cat}',SubCategoryId = '{$p_subcat}'";
+       $query  .=" Itemcode='{$p_code}', ItemName ='{$p_name}', CategoryId ='{$p_cat}',SubCategoryId = '{$p_subcat}',ProductValue = '{$p_value}'";
        $query  .=" WHERE ProductId ='{$product['ProductId']}'";
        $result = $db->query($query);
                if($result && $db->affected_rows() === 1){
@@ -113,6 +114,18 @@ if(!(isset($product['ProductId']))){
                    <?php endforeach; ?>
                  </select>
                   </div>
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                       <i class="glyphicon glyphicon-usd"></i>
+                      </span>
+                      <input type="number" step="0.01" class="form-control" name="product-value" value="<?php echo remove_junk($product['ProductValue']);?>" placeholder="Product Value">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
                   <div class="col-md-6">
                     <select class="form-control" name="product-subcategory">
                     <option value=""> Select a Sub Category</option>

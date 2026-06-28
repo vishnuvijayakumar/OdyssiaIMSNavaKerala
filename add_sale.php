@@ -69,9 +69,9 @@
          <table class="table table-bordered">
            <thead>
             <th> Item </th>
-            <th> Price </th>
+             <th> Price (₹) </th>
             <th> Qty </th>
-            <th> Total </th>
+             <th> Total (₹) </th>
             <th> Date</th>
             <th> Action</th>
            </thead>

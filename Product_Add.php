@@ -4,7 +4,7 @@
   $page_title = 'Add Product';
   require_once('includes/load.php');
 
-  require_once $_SERVER['DOCUMENT_ROOT'].'/InventorySystem/barcode.php';
+  require_once('barcode.php');
 
 
   // Checkin What level user has permission to view this page
@@ -30,13 +30,14 @@ exit;
 
 <?php
  if(isset($_POST['add_product'])){
-   $req_fields = array('product-code','product-title','product-category','product-subcategory' );
+    $req_fields = array('product-code','product-title','product-category','product-subcategory','product-value' );
    validate_fields($req_fields);
    if(empty($errors)){
-    $p_code  = remove_junk($db->escape($_POST['product-code']));
+     $p_code  = remove_junk($db->escape($_POST['product-code']));
      $p_name  = remove_junk($db->escape($_POST['product-title']));
      $p_cat   = remove_junk($db->escape($_POST['product-category']));
      $p_subcat = remove_junk($db->escape($_POST['product-subcategory']));
+     $p_value = remove_junk($db->escape($_POST['product-value']));
      $userid = current_user();
      $p_userid = $userid['id'];
      //echo $p_code,$p_name;die();
@@ -51,9 +52,9 @@ exit;
      //$date    = make_date();
 
      $query  = "INSERT INTO productdetails (";
-     $query .=" ItemCode,ItemName,CategoryId,SubCategoryId,id";
+     $query .=" ItemCode,ItemName,CategoryId,SubCategoryId,ProductValue,id";
      $query .=") VALUES (";
-     $query .=" '{$p_code}','{$p_name}', '{$p_cat}', '{$p_subcat}','{$p_userid}'";
+     $query .=" '{$p_code}','{$p_name}', '{$p_cat}', '{$p_subcat}','{$p_value}','{$p_userid}'";
      $query .=")";
      //$query .=" ON DUPLICATE KEY UPDATE name='{$p_name}'";
      if($db->query($query)){
@@ -130,6 +131,19 @@ exit;
                         <?php echo $scat['SubCategoryName'] ?></option>
                     <?php endforeach; ?>
                     </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                       <i class="glyphicon glyphicon-usd"></i>
+                      </span>
+                      <input type="number" step="0.01" class="form-control" name="product-value" placeholder="Product Value">
+                   </div>
                   </div>
                 </div>
               </div>

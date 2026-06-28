@@ -346,7 +346,7 @@ function tableExists($table){
    /*--------------------------------------------------------------*/
   function join_product_table(){
      global $db;
-     $sql  =" SELECT distinct b.Barcode, p.ProductId,p.Itemcode,p.ItemName,p.CategoryId,p.SubCategoryId,c.CategoryName,m.SubCategoryName,
+      $sql  =" SELECT distinct b.Barcode, p.ProductId,p.Itemcode,p.ItemName,p.ProductValue,p.CategoryId,p.SubCategoryId,c.CategoryName,m.SubCategoryName,
      IF(p.CategoryId!=6 ,SUM(IF(b.Quantity>0,b.Quantity,0)),IF(b.Quantity>0,b.Quantity,0)) as AvlQty,
      IF(p.CategoryId!=6,SUM(IF(b.Quantity>0,1,0)),IF(b.Quantity>0,1,0)) as barcodecount,b.UOM ,GROUP_CONCAT(l.LocationName) as Locations";
     $sql  .=" FROM productdetails p";
@@ -368,7 +368,7 @@ function tableExists($table){
    /*--------------------------------------------------------------*/
    function join_product_table_excel(){
     global $db;
-    $sql  =" SELECT distinct p.ProductId,p.Itemcode,p.ItemName,p.CategoryId,p.SubCategoryId,c.CategoryName,m.SubCategoryName,
+    $sql  =" SELECT distinct p.ProductId,p.Itemcode,p.ItemName,p.ProductValue,p.CategoryId,p.SubCategoryId,c.CategoryName,m.SubCategoryName,
     IF(p.CategoryId=3,SUM(IF(b.Quantity>0,b.Quantity,0)),IF(b.Quantity>0,b.Quantity,0)) as AvlQty,
      IF(p.CategoryId=3,SUM(IF(b.Quantity>0,1,0)),IF(b.Quantity>0,1,0)) as barcodecount,b.UOM ,GROUP_CONCAT(l.LocationName) as Locations";
    $sql  .=" FROM productdetails p";
@@ -712,8 +712,9 @@ function find_stock_by_dates_product($start_date,$end_date,$product_name){
 /*--------------------------------------------------------------*/
 function find_product_report($product_name){
   global $db;
-  $sql   =" SELECT * ";
+  $sql   =" SELECT s.*, p.ProductValue ";
    $sql  .=" FROM productreportview as s";
+   $sql  .=" LEFT JOIN productdetails p ON p.ProductId = s.ProductId";
    if($product_name!=0) {
     $sql  .=" WHERE s.ProductId=".$product_name;
     }

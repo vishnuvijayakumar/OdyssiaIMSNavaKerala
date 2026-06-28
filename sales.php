@@ -32,7 +32,7 @@ $sales = find_all_sale();
                 <th class="text-center" style="width: 50px;">#</th>
                 <th> Product name </th>
                 <th class="text-center" style="width: 15%;"> Quantity</th>
-                <th class="text-center" style="width: 15%;"> Total </th>
+                <th class="text-center" style="width: 15%;"> Total (₹) </th>
                 <th class="text-center" style="width: 15%;"> Date </th>
                 <th class="text-center" style="width: 100px;"> Actions </th>
              </tr>
@@ -43,7 +43,7 @@ $sales = find_all_sale();
                <td class="text-center"><?php echo count_id();?></td>
                <td><?php echo remove_junk($sale['name']); ?></td>
                <td class="text-center"><?php echo (int)$sale['qty']; ?></td>
-               <td class="text-center"><?php echo remove_junk($sale['price']); ?></td>
+                <td class="text-center">₹ <?php echo remove_junk($sale['price']); ?></td>
                <td class="text-center"><?php echo $sale['date']; ?></td>
                <td class="text-center">
                   <div class="btn-group">

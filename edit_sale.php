@@ -67,8 +67,8 @@ if(!$sale){
          <thead>
           <th> Product title </th>
           <th> Qty </th>
-          <th> Price </th>
-          <th> Total </th>
+           <th> Price (₹) </th>
+           <th> Total (₹) </th>
           <th> Date</th>
           <th> Action</th>
          </thead>
@@ -83,10 +83,10 @@ if(!$sale){
                   <input type="text" class="form-control" name="quantity" value="<?php echo (int)$sale['qty']; ?>">
                 </td>
                 <td id="s_price">
-                  <input type="text" class="form-control" name="price" value="<?php echo remove_junk($product['sale_price']); ?>" >
-                </td>
-                <td>
-                  <input type="text" class="form-control" name="total" value="<?php echo remove_junk($sale['price']); ?>">
+                   <input type="text" class="form-control" name="price" value="<?php echo remove_junk($product['sale_price']); ?>" >
+                 </td>
+                 <td>
+                   ₹ <input type="text" class="form-control" name="total" value="<?php echo remove_junk($sale['price']); ?>">
                 </td>
                 <td id="s_date">
                   <input type="date" class="form-control datepicker" name="date" data-date-format="" value="<?php echo remove_junk($sale['date']); ?>">

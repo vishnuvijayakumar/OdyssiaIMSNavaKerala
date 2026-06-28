@@ -48,6 +48,8 @@
                 <th class="text-center" style="width: 10%;"> Category </th>
                 <th class="text-center" style="width: 10%;"> Sub Category </th>
                 <th class="text-center" style="width: 10%;"> Available Quantity </th>
+                <th class="text-center" style="width: 10%;"> Product Value (₹) </th>
+                <th class="text-center" style="width: 10%;"> Total Value (₹) </th>
                 <th class="text-center" style="width: 10%;"> No. of Barcode with Stock </th>
                 <th class="text-center" style="width: 10%;"> UOM </th>
                 <!---<th class="text-center" style="width: 10%;"> Locations </th>--->
@@ -70,6 +72,8 @@
                 <td class="text-center"> <?php echo remove_junk($product['CategoryName']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($product['SubCategoryName']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($product['AvlQty']); ?></td>
+                <td class="text-center"> ₹ <?php echo number_format((float)$product['ProductValue'], 2); ?></td>
+                <td class="text-center"> ₹ <?php echo number_format((float)$product['ProductValue'] * (float)$product['AvlQty'], 2); ?></td>
                 <td class="text-center"> <?php echo remove_junk($product['barcodecount']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($product['UOM']); ?></td>
                 <!---<td class="text-center"> <?php echo remove_junk($product['Locations']); ?></td>--->
