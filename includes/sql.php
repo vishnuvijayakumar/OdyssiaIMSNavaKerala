@@ -369,8 +369,8 @@ function tableExists($table){
    function join_product_table_excel(){
     global $db;
     $sql  =" SELECT distinct p.ProductId,p.Itemcode,p.ItemName,p.ProductValue,p.CategoryId,p.SubCategoryId,c.CategoryName,m.SubCategoryName,
-    IF(p.CategoryId=3,SUM(IF(b.Quantity>0,b.Quantity,0)),IF(b.Quantity>0,b.Quantity,0)) as AvlQty,
-     IF(p.CategoryId=3,SUM(IF(b.Quantity>0,1,0)),IF(b.Quantity>0,1,0)) as barcodecount,b.UOM ,GROUP_CONCAT(l.LocationName) as Locations";
+    IF(p.CategoryId!=6,SUM(IF(b.Quantity>0,b.Quantity,0)),IF(b.Quantity>0,b.Quantity,0)) as AvlQty,
+     IF(p.CategoryId!=6,SUM(IF(b.Quantity>0,1,0)),IF(b.Quantity>0,1,0)) as barcodecount,b.UOM ,GROUP_CONCAT(l.LocationName) as Locations";
    $sql  .=" FROM productdetails p";
    $sql  .=" LEFT JOIN categorydetails c ON c.CategoryId = p.CategoryId";
    $sql  .=" LEFT JOIN subcategorydetails m ON m.SubCategoryId = p.SubCategoryId";

@@ -12,7 +12,13 @@
 
     $tasks = array();
     while( $rows = mysqli_fetch_assoc($results) ) {
-    $tasks[] = $rows;
+      $product_value_index = array_search('ProductValue', array_keys($rows)) + 1;
+      $rows = array_merge(
+        array_slice($rows, 0, $product_value_index, true),
+        array('Total Value' => number_format((float)$rows['ProductValue'] * (float)$rows['AvlQty'], 2, '.', '')),
+        array_slice($rows, $product_value_index, count($rows), true)
+      );
+      $tasks[] = $rows;
     }
 
     $filename = "IMS_Product_export_".date('Ymd') . ".xls";
