@@ -24,14 +24,26 @@ $results = '';
 
         $tasks = array();
         while( $rows = mysqli_fetch_assoc($results) ) {
+          $export_row = array();
+          $product_value = $rows['ProductValue'];
           $total_available_stock = (float)$rows['Total Inward Stock'] - (float)$rows['Total Outward Stock'];
-          $product_value_index = array_search('ProductValue', array_keys($rows)) + 1;
-          $rows = array_merge(
-            array_slice($rows, 0, $product_value_index, true),
-            array('Total Value' => number_format((float)$rows['ProductValue'] * $total_available_stock, 2, '.', '')),
-            array_slice($rows, $product_value_index, count($rows), true)
-          );
-          $tasks[] = $rows;
+          $total_value = number_format((float)$rows['ProductValue'] * $total_available_stock, 2, '.', '');
+
+          foreach($rows as $key => $value) {
+            if($key === 'ProductValue') {
+              continue;
+            }
+
+            if($key === 'Total Inward Stock') {
+              $export_row['Total Available Stock'] = $total_available_stock;
+              $export_row['ProductValue'] = $product_value;
+              $export_row['Total Value'] = $total_value;
+            }
+
+            $export_row[$key] = $value;
+          }
+
+          $tasks[] = $export_row;
         }
 
         $filename = "IMS_ProductReport_export_".date('Ymd') . ".xls";
