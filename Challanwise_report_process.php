@@ -12,12 +12,12 @@
     if(empty($errors)):
       $planno = remove_junk($db->escape($_POST['planno']));
       
-      $results1 = find_stock_by_challan($planno);
-      foreach ($results1 as $stock2):
-        $planno=remove_junk($stock2['PlanNo']);
-      endforeach;
+      $results = find_stock_by_challan($planno);
+      //foreach ($results1 as $stock2):
+       // $planno=remove_junk($stock2['PlanNo']);
+      //endforeach;
 
-      $results = find_stock_by_plan($planno);
+      //$results = find_stock_by_plan($planno);
       //print_r($results);die();
 
     else:

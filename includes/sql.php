@@ -742,7 +742,7 @@ function find_stock_by_plan($planno){
    $sql  .=" LEFT JOIN barcodedetails b ON b.Barcode = s.Barcode";
    $sql  .=" LEFT JOIN users us ON us.id = s.id";
    $sql  .=" LEFT JOIN challandetails ch on ch.ChallanId=s.ChallanId";
-   $sql  .=" WHERE s.PlanNo =".$planno;
+   $sql  .=" WHERE s.PlanNo =".$planno ." OR ch.ChallanName =".$planno;
    $sql  .=" ORDER BY co.CategoryId DESC";
 
    //echo $sql;die();
