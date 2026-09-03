@@ -26,11 +26,11 @@ $results = '';
         while( $rows = mysqli_fetch_assoc($results) ) {
           $export_row = array();
           $product_value = $rows['ProductValue'];
-          $total_available_stock = (float)$rows['Total Inward Stock'] - (float)$rows['Total Outward Stock'];
+          $total_available_stock = (float)$rows['AvlQty'];
           $total_value = number_format((float)$rows['ProductValue'] * $total_available_stock, 2, '.', '');
 
           foreach($rows as $key => $value) {
-            if($key === 'ProductValue') {
+            if($key === 'ProductValue' || $key === 'AvlQty') {
               continue;
             }
 
@@ -113,9 +113,9 @@ $results = '';
                 <td class="text-center"> <?php echo remove_junk($stock['Itemcode']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['ItemName']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['CategoryName']); ?></td>
-                <td class="text-center"> <?php echo remove_junk($stock['Total Inward Stock'])-remove_junk($stock['Total Outward Stock']); ?></td>
+                <td class="text-center"> <?php echo remove_junk($stock['AvlQty']); ?></td>
                 <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'], 2); ?></td>
-                <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'] * ((float)$stock['Total Inward Stock'] - (float)$stock['Total Outward Stock']), 2); ?></td>
+                <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'] * (float)$stock['AvlQty'], 2); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Total Inward Stock']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Inward Stock']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Excess In Stock']); ?></td>

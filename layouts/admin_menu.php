@@ -114,6 +114,7 @@
        <li><a href="datewise_report.php">Datewise Report</a> </li>
        <li><a href="locationwise_report.php">Location Report</a> </li>
        <li><a href="productlocation_report.php">Product Location Report</a> </li>
+         <li><a href="slow_moving_products.php">Slow Moving Products</a> </li>
    </ul>
   </li>
   <!--<li>
