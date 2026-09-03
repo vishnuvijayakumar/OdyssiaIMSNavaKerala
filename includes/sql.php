@@ -712,15 +712,51 @@ function find_stock_by_dates_product($start_date,$end_date,$product_name){
 /*--------------------------------------------------------------*/
 function find_product_report($product_name){
   global $db;
-  $sql   =" SELECT s.*, p.ProductValue ";
+  $sql   =" SELECT s.*, p.ProductValue, ";
+  $sql  .=" IF(p.CategoryId!=6,SUM(IF(b.Quantity>0,b.Quantity,0)),IF(b.Quantity>0,b.Quantity,0)) AS AvlQty ";
    $sql  .=" FROM productreportview as s";
    $sql  .=" LEFT JOIN productdetails p ON p.ProductId = s.ProductId";
+   $sql  .=" LEFT JOIN stockdetails st ON (st.ProductId = p.ProductId AND st.StockType='IN - First Entry')";
+   $sql  .=" LEFT JOIN barcodedetails b ON b.Barcode = st.Barcode";
    if($product_name!=0) {
     $sql  .=" WHERE s.ProductId=".$product_name;
     }
+   $sql  .=" GROUP BY s.ProductId";
    $sql  .=" ORDER BY s.ItemName ASC";
   return $db->query($sql);
 
+}
+
+/*--------------------------------------------------------------*/
+/* Function for finding products with the lowest outward movement
+/*--------------------------------------------------------------*/
+function find_slow_moving_products($start_date, $end_date, $offset = 0, $limit = 20){
+  global $db;
+  $start_date = date("Y-m-d", strtotime($start_date));
+  $end_date   = date("Y-m-d", strtotime($end_date));
+  $offset = max(0, (int)$offset);
+  $limit  = max(1, (int)$limit);
+  $sql  = "SELECT SQL_CALC_FOUND_ROWS p.ProductId,p.Itemcode,p.ItemName,c.CategoryName,p.ProductValue,";
+  $sql .= "COALESCE(current_stock.CurrentStock,0) AS CurrentStock,";
+  $sql .= "COALESCE(outward_movement.OutwardQty,0) AS OutwardQty,";
+  $sql .= "outward_movement.LastMovement ";
+  $sql .= "FROM productdetails p ";
+  $sql .= "LEFT JOIN categorydetails c ON c.CategoryId = p.CategoryId ";
+  $sql .= "LEFT JOIN (";
+  $sql .= "SELECT ProductId,SUM(BarcodeQuantity) AS CurrentStock FROM (";
+  $sql .= "SELECT s.ProductId,s.Barcode,MAX(b.Quantity) AS BarcodeQuantity ";
+  $sql .= "FROM stockdetails s INNER JOIN barcodedetails b ON b.Barcode = s.Barcode ";
+  $sql .= "WHERE s.StockType = 'IN - First Entry' GROUP BY s.ProductId,s.Barcode";
+  $sql .= ") AS barcode_stock GROUP BY ProductId";
+  $sql .= ") AS current_stock ON current_stock.ProductId = p.ProductId ";
+  $sql .= "LEFT JOIN (";
+  $sql .= "SELECT ProductId,SUM(Quantity) AS OutwardQty,MAX(Created_at) AS LastMovement ";
+  $sql .= "FROM stockdetails WHERE LOWER(StockType) LIKE 'out%' ";
+  $sql .= "AND DATE(Created_at) BETWEEN '{$start_date}' AND '{$end_date}' GROUP BY ProductId";
+  $sql .= ") AS outward_movement ON outward_movement.ProductId = p.ProductId ";
+  $sql .= "WHERE COALESCE(current_stock.CurrentStock,0) > 0 ";
+  $sql .= "ORDER BY COALESCE(outward_movement.OutwardQty,0) ASC,p.ItemName ASC LIMIT {$offset},{$limit}";
+  return $db->query($sql);
 }
 
 /*--------------------------------------------------------------*/

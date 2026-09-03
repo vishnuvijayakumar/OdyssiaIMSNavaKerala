@@ -166,8 +166,10 @@ class Pagination{
     } 
  
     function getAJAXlink( $count, $text) { 
-        if($this->link_func == '' && $this->contentDiv == '') 
-            return '<a class="btn btn-primary" href="'.$this->baseURL.'?'.$count.'"'.$this->anchorClass.'>'.$text.'</a>'; 
+        if($this->link_func == '' && $this->contentDiv == '') {
+            $separator = (strpos($this->baseURL, '?') === false) ? '?' : '&';
+            return '<a class="btn btn-primary" href="'.$this->baseURL.$separator.$count.'"'.$this->anchorClass.'>'.$text.'</a>';
+        }
          
         $pageCount = $count?$count:0; 
         if(!empty($this->link_func)){ 
