@@ -81,9 +81,9 @@
                 <td class="text-center"> <?php echo remove_junk($stock['Itemcode']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['ItemName']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['CategoryName']); ?></td>
-                <td class="text-center"> <?php echo remove_junk($stock['Total Inward Stock'])-remove_junk($stock['Total Outward Stock']); ?></td>
+                <td class="text-center"> <?php echo remove_junk($stock['AvlQty']); ?></td>
                 <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'], 2); ?></td>
-                <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'] * ((float)$stock['Total Inward Stock'] - (float)$stock['Total Outward Stock']), 2); ?></td>
+                <td class="text-center"> ₹ <?php echo number_format((float)$stock['ProductValue'] * (float)$stock['AvlQty'], 2); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Total Inward Stock']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Inward Stock']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($stock['Excess In Stock']); ?></td>
